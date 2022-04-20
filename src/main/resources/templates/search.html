@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8/">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+</head>
+<style>
+
+</style>
+<body>
+
+<p th:text= "${userInputKey.getBusinesses().get(0).getName()}" ></p>
+<p th:text= "${userInputKey.getBusinesses().get(0).getCategories().get(1).getTitle()}" ></p>
+
+</body>
+</html>
