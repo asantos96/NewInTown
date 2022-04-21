@@ -4,20 +4,33 @@
     <meta charset="UTF-8/">
     <title>Home</title>
     <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <style>
 
 </style>
 <body>
+
+<div class="w3-sidebar w3-bar-block w3-black w3-xxlarge" style="width:70px">
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-home"></i></a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-search"></i></a>
+    <a href="#" class="w3-bar-item w3-button"><i class="material-icons" style="font-size:36px">restaurant</i></a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-globe"></i></a>
+    <a href="#" class="w3-bar-item w3-button"><i class="fa fa-trash"></i></a>
+</div>
+<div class="container">
 <h1>So you're new in town...</h1>
 
 <form action="/search" >
     <input name="userEnteredCity" type="search" placeholder="Search city" required="required" autocomplete="off"/>
+    <br>
     <input name="userEnteredCategory" type="search" placeholder="Search Category" required="required" autocomplete="off"/>
     <p> Try "Bars", "Restaurants", "Lounges"</p>
     <input type="submit" value="Submit">
 <!--    Make category into dropdown-->
 </form>
-
+</div>
 </body>
 </html>
