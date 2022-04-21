@@ -5,25 +5,34 @@
     <title>Home</title>
     <link rel="stylesheet" href="/stylesheet.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <style>
-
+    h1{
+        text-align: center;
+        /*margin-top: 120px;*/
+    }
 </style>
 <body>
 
-<!--<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:15%">-->
-<!--    <h3 class="w3-bar-item">Menu</h3>-->
-<!--    <a href="datenight" class="w3-bar-item w3-button">Date Night Spots</a>-->
-<!--    <a href="#" class="w3-bar-item w3-button">Link 2</a>-->
-<!--    <a href="#" class="w3-bar-item w3-button">Link 3</a>-->
-<!--</div>-->
-<div class="container">
+<div class="w3-sidebar w3-white w3-bar-block" style="width:10%">
+    <h3 class="w3-bar-item">Navigation</h3>
+    <a href="home" class="w3-bar-item w3-button">Home</a>
+    <a href="favorites" class="w3-bar-item w3-button">Your Favorites</a>
+    <a href="datenight" class="w3-bar-item w3-button">Date Nights</a>
+    <a href="familyoutings" class="w3-bar-item w3-button">Family Outings</a>
+    <a href="cocktailhappyhour" class="w3-bar-item w3-button">Cocktail Happy Hour</a>
+    <a href="latenight" class="w3-bar-item w3-button">Late Night Grub</a>
+    <a href="animalfriendly" class="w3-bar-item w3-button">Animal Friendly</a>
+    <a href="#" class="w3-bar-item w3-button">Link 2</a>
+    <a href="#" class="w3-bar-item w3-button">Link 3</a>
+</div>
 <h1>So you're new in town...</h1>
+<div class="container">
+
 
 <form action="/search" >
-    <input name="userEnteredCity" type="search" placeholder="Search City" required="required" autocomplete="off"/>
+    <input name="userEnteredCity" type="search" placeholder="Search City" required="required" autocomplete="on"/>
     <br>
     <input name="userEnteredCategory" type="search" placeholder="Search Category" required="required" autocomplete="off"/>
     <p> Try "Bars", "Restaurants", "Lounges" , "Italian" , "Seafood" as Category </p>

@@ -3,13 +3,14 @@ package NewInTown.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.net.URL;
 import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Businesses {
     private String alias;
     private String name;
-    private String url;
+    private URL url;
     private List<Categories> categories;
     private double rating;
     private String price;
@@ -31,11 +32,11 @@ public class Businesses {
         this.name = name;
     }
 
-    public String getUrl() {
+    public URL getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
+    public void setUrl(URL url) {
         this.url = url;
     }
 

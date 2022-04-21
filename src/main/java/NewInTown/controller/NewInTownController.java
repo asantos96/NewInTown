@@ -48,5 +48,23 @@ public class NewInTownController {
         modelMap.put("userInputKey", userInput);
         return "search";
     }
+
+    @RequestMapping("/favorites")
+    public String displayUsersFavorites (ModelMap modelMap) {
+//        modelMap.put("userInputKey", userInput);
+        return "favorites";
+    }
+
+    @RequestMapping("/datenight")
+    public String displayDateNightResults (ModelMap modelMap) {
+//        modelMap.put("userInputKey", userInput);
+        return "datenight";
+    }
+
+    @RequestMapping("/familyoutings")
+    public String displayFamilyOutingResults (ModelMap modelMap) {
+//        modelMap.put("userInputKey", userInput);
+        return "familyoutings";
+    }
 //consider try catch block when calling service to handle errors
 }
