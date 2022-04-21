@@ -6,26 +6,24 @@
     <link rel="stylesheet" href="/stylesheet.css">
 </head>
 <style>
-.name{
-    font-weight: bold;
-}
+    h2{
+        text-align: center;
+    }
+    .name {
+        font-weight: bold;
+    }
 </style>
 <body>
 <h2> Your Search Results </h2>
 <!--Initial loop to run through businesses list-->
 <div th:each="business : ${userInputKey.businesses}">
-<!--properties of the business object-->
+    <!--properties of the business object-->
     <div class="searchresults">
-    <p class ="name" th:text = "${business.name} ">
-    </p>
-        <p th:text = " ' Rating: ' +  ${business.rating} + ' Price: ' + ${business.price} ">
-        </p>
-<!--        <p th:text = " ' Website: ' +  ${business.url}">-->
-<!--        </p>-->
-        <a th:href=" 'Website: ' + ${business.url}"></a>
-        <p th:text= "${business.locationDetails.displayAddress.get(0)} + ', ' + ${business.locationDetails.displayAddress.get(1)}">
-        </p>
-        </div>
+        <p class="name" th:text="${business.name} "></p>
+        <p th:text=" ' Rating: ' +  ${business.rating} + ' Price: ' + ${business.price} "></p>
+        <a th:href="${business.url}">Business' Yelp Review Website</a>
+        <p th:text="${business.locationDetails.displayAddress.get(0)} + ', ' + ${business.locationDetails.displayAddress.get(1)}"></p>
+    </div>
 </div>
 </body>
 </html>

@@ -48,19 +48,6 @@ public class NewInTownController {
         return "search";
     }
 
-    //Method to link URL
-    public void hyperlinkedURL () throws IOException {
-        RestaurantData restaurantDataTest = newRestaurantService.fetchRestaurantInfo("baltimore", "bars");
-
-        //creates a list of all businesses
-        List<Businesses> businessList = restaurantDataTest.getBusinesses();
-
-        //loops through each business object
-        for (int i = 0; i < businessList.size(); i++) {
-                System.out.println(businessList.get(i).getUrl().toString());
-        }
-    }
-
     @RequestMapping("/favorites")
     public String displayUsersFavorites (ModelMap modelMap) {
 //        modelMap.put("userInputKey", userInput);
