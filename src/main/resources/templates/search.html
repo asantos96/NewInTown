@@ -20,8 +20,9 @@
     </p>
         <p th:text = " ' Rating: ' +  ${business.rating} + ' Price: ' + ${business.price} ">
         </p>
-        <p th:text = " ' Website: ' +  ${business.url}">
-        </p>
+<!--        <p th:text = " ' Website: ' +  ${business.url}">-->
+<!--        </p>-->
+        <a th:href=" 'Website: ' + ${business.url}"></a>
         <p th:text= "${business.locationDetails.displayAddress.get(0)} + ', ' + ${business.locationDetails.displayAddress.get(1)}">
         </p>
         </div>

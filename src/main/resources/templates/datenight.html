@@ -9,5 +9,19 @@
 </head>
 <body>
 <p>Hi</p>
+<!--Initial loop to run through businesses list-->
+<div th:each="business : ${dateNight.businesses}">
+    <!--properties of the business object-->
+    <div class="searchresults">
+        <p class ="name" th:text = "${business.name} ">
+        </p>
+        <p th:text = " ' Rating: ' +  ${business.rating} + ' Price: ' + ${business.price} ">
+        </p>
+        <p th:text = " ' Website: ' +  ${business.url}">
+        </p>
+        <p th:text= "${business.locationDetails.displayAddress.get(0)}">
+        </p>
+    </div>
+</div>
 </body>
 </html>

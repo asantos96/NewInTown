@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.util.Collections;
+import java.net.URL;
 import java.util.List;
 
 
@@ -23,11 +23,10 @@ public class NewInTownController {
     @RequestMapping( "/")
     public String loadPage() throws IOException {
         RestaurantData restaurantDataTest = newRestaurantService.fetchRestaurantInfo("baltimore", "bars");
-//        System.out.println(restaurantDataTest.getBusinesses().get(0).getName());
+        System.out.println(restaurantDataTest.getBusinesses().get(0).getUrl().toString());
 //        System.out.println(restaurantDataTest.getBusinesses().get(1).getLocationDetails().getDisplayAddress().get(0));
 
-
-
+//
 //        //creates a list of all businesses
 //        List<Businesses> businessList = restaurantDataTest.getBusinesses();
 //
@@ -49,15 +48,32 @@ public class NewInTownController {
         return "search";
     }
 
+    //Method to link URL
+    public void hyperlinkedURL () throws IOException {
+        RestaurantData restaurantDataTest = newRestaurantService.fetchRestaurantInfo("baltimore", "bars");
+
+        //creates a list of all businesses
+        List<Businesses> businessList = restaurantDataTest.getBusinesses();
+
+        //loops through each business object
+        for (int i = 0; i < businessList.size(); i++) {
+                System.out.println(businessList.get(i).getUrl().toString());
+        }
+    }
+
     @RequestMapping("/favorites")
     public String displayUsersFavorites (ModelMap modelMap) {
 //        modelMap.put("userInputKey", userInput);
         return "favorites";
     }
-
+//How do I save userinputs to reflect these?
+//How to include multiple categories?
     @RequestMapping("/datenight")
-    public String displayDateNightResults (ModelMap modelMap) {
-//        modelMap.put("userInputKey", userInput);
+    public String displayDateNightResults (String city, String category, ModelMap modelMap) throws IOException {
+        RestaurantData dateNightCategories = newRestaurantService.fetchRestaurantInfo("baltimore", category);
+        if (category.equals("jazzandblues") || category.equals("wine_bars") || category.equals("comedyclubs")) {
+            modelMap.put("dateNight", dateNightCategories);
+        }
         return "datenight";
     }
 
