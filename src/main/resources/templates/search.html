@@ -10,8 +10,19 @@
 </style>
 <body>
 
-<p th:text= "${userInputKey.getBusinesses().get(0).getName()}" ></p>
-<p th:text= "${userInputKey.getBusinesses().get(0).getCategories().get(1).getTitle()}" ></p>
-
+<!--Initial loop to run through businesses list-->
+<div th:each="business : ${userInputKey.businesses}">
+<!--properties of the business object-->
+    <div class="searchresults">
+    <p th:text = "${business.name} + ${business.rating} ">
+    </p>
+    <p th:text= "${business.rating}">
+    </p>
+    <p th:text= "${business.price}">
+    </p>
+        <p th:text= "${business.locationDetails.displayAddress.get(0)} ">
+        </p>
+</div>
+</div>
 </body>
 </html>
