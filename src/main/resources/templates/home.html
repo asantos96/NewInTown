@@ -29,14 +29,40 @@
 <h1>So you're new in town...</h1>
 <div class="container">
 
+    <script type="text/javascript">
+        function EnableDisableTextBox(userEnteredCategory) {
+            var selectedValue = userEnteredCategory.options[userEnteredCategory.selectedIndex].value;
+            var txtOther = document.getElementById("txtOther");
+            txtOther.disabled = selectedValue == 5 ? false : true;
+            if (!txtOther.disabled) {
+                txtOther.focus();
+            }
+        }
+    </script>
+
 
 <form action="/search" >
     <input name="userEnteredCity" type="search" placeholder="Search City" required="required" autocomplete="on"/>
     <br>
-    <input name="userEnteredCategory" type="search" placeholder="Search Category" required="required" autocomplete="off"/>
-    <p> Try "Bars", "Restaurants", "Lounges" , "Italian" , "Seafood" as Category </p>
+<!--    <input name="userEnteredCategory" type="search" placeholder="Search Category" required="required" autocomplete="off"/>-->
+<!--    <p> Try "Bars", "Restaurants", "Lounges" , "Italian" , "Seafood" as Category </p>-->
+<!--    <input type="submit" value="Submit">-->
+
+    <span>Select your Category or choose other to try your luck at one! Looking for a specific cuisine search it here. </span>
+    <select name = "userEnteredCategory" id = "userEnteredCategory" onchange = "EnableDisableTextBox(this)">
+        <option value = "1">Restaurants</option>
+        <option value = "2">Bars</option>
+        <option value = "3">Lounges</option>
+        <option value = "4">Seafood</option>
+        <option value = "5">Latin</option>
+        <option value = "5">Other</option>
+    </select>
+    <br />
+    <br />
+    Other:
+    <input name = "userEnteredCategory" type="search" id="txtOther" disabled="disabled" />
     <input type="submit" value="Submit">
-<!--    Make category into dropdown-->
+
 </form>
 </div>
 </body>
