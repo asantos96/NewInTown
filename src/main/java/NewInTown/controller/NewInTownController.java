@@ -2,6 +2,7 @@ package NewInTown.controller;
 
 import NewInTown.model.Businesses;
 import NewInTown.model.RestaurantData;
+import NewInTown.repository.DateNightRepository;
 import NewInTown.service.restaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,10 @@ public class NewInTownController {
 
     @Autowired
     private restaurantService newRestaurantService;
+
+    @Autowired
+    private DateNightRepository dateNightRepositoryTitles;
+
 
     @RequestMapping( "/")
     public String loadPage() throws IOException {
@@ -59,14 +64,13 @@ public class NewInTownController {
         return "favorites";
     }
 
-//How do I save userinputs to reflect these?
-//How to include multiple categories?
+//How do I save userinputs to reflect the city they chose?
     @RequestMapping("/datenight")
-    public String displayDateNightResults (String city, String category, ModelMap modelMap) throws IOException {
-        RestaurantData dateNightCategories = newRestaurantService.fetchRestaurantInfo("baltimore", category);
-        if (category.equals("jazzandblues") || category.equals("wine_bars") || category.equals("comedyclubs")) {
-            modelMap.put("dateNight", dateNightCategories);
-        }
+    public String displayDateNightResults (String city, ModelMap modelMap) throws IOException {
+        String category = dateNightRepositoryTitles.dateNightIdeas();
+        RestaurantData dateNightCategories = newRestaurantService.fetchRestaurantInfo("dc", category);
+        System.out.println(category);
+        modelMap.put("dateNight", dateNightCategories);
         return "datenight";
     }
 

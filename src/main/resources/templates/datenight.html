@@ -8,17 +8,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<p>Hi</p>
+
 <!--Initial loop to run through businesses list-->
 <div th:each="business : ${dateNight.businesses}">
+    <p th:text = "${business.categories.get(0).title}"></p>
     <!--properties of the business object-->
     <div class="searchresults">
         <p class ="name" th:text = "${business.name} ">
         </p>
         <p th:text = " ' Rating: ' +  ${business.rating} + ' Price: ' + ${business.price} ">
         </p>
-        <p th:text = " ' Website: ' +  ${business.url}">
-        </p>
+        <a th:href="${business.url}">Business' Yelp Review Website</a>
         <p th:text= "${business.locationDetails.displayAddress.get(0)}">
         </p>
     </div>
