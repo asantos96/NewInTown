@@ -1,7 +1,9 @@
 .container {
-    background-color: rebeccapurple;
+    background-color: tan;
+    opacity: .9;
     font-family: arial;
-    font-size: 24px;
+    text-align: center;
+    font-size: 22px;
     /*margin: 180px;*/
     margin-left: 500px;
     margin-top: 100px;
@@ -12,11 +14,12 @@
     position: relative;
     padding-left: 50px;
     padding-right: 50px;
-    padding-top: 50px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 .searchresults{
 
     text-align: center;
-    background-color: aquamarine;
+    background-color: tan;
     border-color: black;
 }

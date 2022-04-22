@@ -13,8 +13,9 @@
         /*margin-top: 120px;*/
     }
 </style>
-<body>
+<body th:style="'background:url(' + @{|https://source.unsplash.com/1600x900/?food|} + '); background-size: cover;'">
 
+<!--Side Nav Bar-->
 <div class="w3-sidebar w3-white w3-bar-block" style="width:10%">
     <h3 class="w3-bar-item">Navigation</h3>
     <a href="home" class="w3-bar-item w3-button">Home</a>
@@ -28,7 +29,8 @@
 </div>
 <h1>So you're new in town...</h1>
 <div class="container">
-
+    <b>So you're new in town...</b>
+<!--    Javascript that allows for other option text box to appear if selected-->
     <script type="text/javascript">
         function EnableDisableTextBox(userEnteredCategory) {
             var selectedValue = userEnteredCategory.options[userEnteredCategory.selectedIndex].value;
@@ -42,19 +44,20 @@
 
 
 <form action="/search" >
-    <input name="userEnteredCity" type="search" placeholder="Search City" required="required" autocomplete="on"/>
-    <br>
+    <input name="userEnteredCity" type="search" placeholder="Search City" required="required" autocomplete="off"/>
+    <br />
+    <br />
 <!--    <input name="userEnteredCategory" type="search" placeholder="Search Category" required="required" autocomplete="off"/>-->
 <!--    <p> Try "Bars", "Restaurants", "Lounges" , "Italian" , "Seafood" as Category </p>-->
 <!--    <input type="submit" value="Submit">-->
 
     <span>Select your Category or choose other to try your luck at one! Looking for a specific cuisine search it here. </span>
+    <br>
     <select name = "userEnteredCategory" id = "userEnteredCategory" onchange = "EnableDisableTextBox(this)">
         <option value = "1">Restaurants</option>
         <option value = "2">Bars</option>
         <option value = "3">Lounges</option>
         <option value = "4">Seafood</option>
-        <option value = "5">Latin</option>
         <option value = "5">Other</option>
     </select>
     <br />

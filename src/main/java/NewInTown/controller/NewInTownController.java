@@ -48,11 +48,17 @@ public class NewInTownController {
         return "search";
     }
 
+    @RequestMapping("/home")
+    public String displayHome (){
+        return "home";
+    }
+
     @RequestMapping("/favorites")
     public String displayUsersFavorites (ModelMap modelMap) {
 //        modelMap.put("userInputKey", userInput);
         return "favorites";
     }
+
 //How do I save userinputs to reflect these?
 //How to include multiple categories?
     @RequestMapping("/datenight")
