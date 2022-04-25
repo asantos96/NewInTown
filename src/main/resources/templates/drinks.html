@@ -10,7 +10,7 @@
 <body>
 
 <!--Initial loop to run through businesses list-->
-<div th:each="business : ${family.businesses}">
+<div th:each="business : ${distillery.businesses}">
     <p th:text = "${business.categories.get(0).title}"></p>
     <!--properties of the business object-->
     <div class="searchresults">

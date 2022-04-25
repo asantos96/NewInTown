@@ -3,6 +3,8 @@ package NewInTown.controller;
 import NewInTown.model.Businesses;
 import NewInTown.model.RestaurantData;
 import NewInTown.repository.DateNightRepository;
+import NewInTown.repository.DistilleriesAndMoreRepository;
+import NewInTown.repository.FamilyOutingsRepository;
 import NewInTown.service.restaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,6 +25,12 @@ public class NewInTownController {
 
     @Autowired
     private DateNightRepository dateNightRepositoryTitles;
+
+    @Autowired
+    private FamilyOutingsRepository familyRepositoryTitles;
+
+    @Autowired
+    private DistilleriesAndMoreRepository distilleriesRepositoryTitles;
 
 
     @RequestMapping( "/")
@@ -75,9 +83,19 @@ public class NewInTownController {
     }
 
     @RequestMapping("/familyoutings")
-    public String displayFamilyOutingResults (ModelMap modelMap) {
-//        modelMap.put("userInputKey", userInput);
+    public String displayFamilyOutingResults (String city, ModelMap modelMap) throws IOException {
+        String category = familyRepositoryTitles.familyIdeas();
+        RestaurantData familyCategories = newRestaurantService.fetchRestaurantInfo("dc", category);
+        modelMap.put("family", familyCategories);
         return "familyoutings";
+    }
+
+    @RequestMapping("/drinks")
+    public String displayDrinkResults (String city, ModelMap modelMap) throws IOException {
+        String category = distilleriesRepositoryTitles.distilleryIdeas();
+        RestaurantData distilleryCategories = newRestaurantService.fetchRestaurantInfo("dc", category);
+        modelMap.put("distillery", distilleryCategories);
+        return "drinks";
     }
 //consider try catch block when calling service to handle errors
 }

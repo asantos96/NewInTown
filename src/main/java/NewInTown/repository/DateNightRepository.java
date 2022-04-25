@@ -10,7 +10,7 @@ import java.util.Random;
 @Component
 
 public class DateNightRepository {
-    private List<String> dateNightCategoryTitles = Arrays.asList("movietheaters", "jazzandblues", "paintandsip", "comedyclubs");
+    private List<String> dateNightCategoryTitles = Arrays.asList("movietheaters", "jazzandblues", "paintandsip", "comedyclubs", "tastingclasses");
 
     public List<String> getDateNightCategoryTitles() {
         return dateNightCategoryTitles;
@@ -22,6 +22,6 @@ public class DateNightRepository {
 
     public String dateNightIdeas (){
         Random randomSelection = new Random(System.currentTimeMillis());
-        return dateNightCategoryTitles.get(randomSelection.nextInt(4));
+        return dateNightCategoryTitles.get(randomSelection.nextInt(5));
     }
 }
