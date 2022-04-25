@@ -1,6 +1,5 @@
 package NewInTown.controller;
 
-import NewInTown.model.Businesses;
 import NewInTown.model.RestaurantData;
 import NewInTown.repository.DateNightRepository;
 import NewInTown.repository.DistilleriesAndMoreRepository;
@@ -10,11 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.List;
 
 
 @Controller
@@ -31,6 +29,9 @@ public class NewInTownController {
 
     @Autowired
     private DistilleriesAndMoreRepository distilleriesRepositoryTitles;
+
+    //empty string
+    static String userSavedCity;
 
 
     @RequestMapping( "/")
@@ -53,11 +54,12 @@ public class NewInTownController {
         return "home";
     }
 
-    @RequestMapping("/search")
+    @RequestMapping( "/search")
     public String searchResult (@RequestParam("userEnteredCity") String city, @RequestParam("userEnteredCategory") String category,
                                 ModelMap modelMap) throws IOException {
         RestaurantData userInput = newRestaurantService.fetchRestaurantInfo(city, category);
         modelMap.put("userInputKey", userInput);
+        userSavedCity = city;
         return "search";
     }
 
@@ -72,11 +74,11 @@ public class NewInTownController {
         return "favorites";
     }
 
-//How do I save userinputs to reflect the city they chose?
+
     @RequestMapping("/datenight")
-    public String displayDateNightResults (String city, ModelMap modelMap) throws IOException {
+    public String displayDateNightResults (ModelMap modelMap) throws IOException {
         String category = dateNightRepositoryTitles.dateNightIdeas();
-        RestaurantData dateNightCategories = newRestaurantService.fetchRestaurantInfo("dc", category);
+        RestaurantData dateNightCategories = newRestaurantService.fetchRestaurantInfo(userSavedCity, category);
         System.out.println(category);
         modelMap.put("dateNight", dateNightCategories);
         return "datenight";
@@ -85,7 +87,7 @@ public class NewInTownController {
     @RequestMapping("/familyoutings")
     public String displayFamilyOutingResults (String city, ModelMap modelMap) throws IOException {
         String category = familyRepositoryTitles.familyIdeas();
-        RestaurantData familyCategories = newRestaurantService.fetchRestaurantInfo("dc", category);
+        RestaurantData familyCategories = newRestaurantService.fetchRestaurantInfo(userSavedCity, category);
         modelMap.put("family", familyCategories);
         return "familyoutings";
     }
@@ -93,7 +95,7 @@ public class NewInTownController {
     @RequestMapping("/drinks")
     public String displayDrinkResults (String city, ModelMap modelMap) throws IOException {
         String category = distilleriesRepositoryTitles.distilleryIdeas();
-        RestaurantData distilleryCategories = newRestaurantService.fetchRestaurantInfo("dc", category);
+        RestaurantData distilleryCategories = newRestaurantService.fetchRestaurantInfo(userSavedCity, category);
         modelMap.put("distillery", distilleryCategories);
         return "drinks";
     }
