@@ -54,18 +54,19 @@ public class NewInTownController {
         return "home";
     }
 
+    @RequestMapping("/home")
+    public String displayHome (){
+        return "home";
+    }
+
     @RequestMapping( "/search")
     public String searchResult (@RequestParam("userEnteredCity") String city, @RequestParam("userEnteredCategory") String category,
                                 ModelMap modelMap) throws IOException {
         RestaurantData userInput = newRestaurantService.fetchRestaurantInfo(city, category);
         modelMap.put("userInputKey", userInput);
+        //static variable created outside of method is now set to the user input bc of the below
         userSavedCity = city;
         return "search";
-    }
-
-    @RequestMapping("/home")
-    public String displayHome (){
-        return "home";
     }
 
     @RequestMapping("/favorites")
