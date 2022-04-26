@@ -1,5 +1,6 @@
 package NewInTown.controller;
 
+import NewInTown.model.Location;
 import NewInTown.model.RestaurantData;
 import NewInTown.repository.DateNightRepository;
 import NewInTown.repository.DistilleriesAndMoreRepository;

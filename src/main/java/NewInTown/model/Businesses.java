@@ -71,4 +71,8 @@ public class Businesses {
     public void setLocationDetails(Location locationDetails) {
         this.locationDetails = locationDetails;
     }
+
+//    public String NPEonPrice() throws NullPointerException {
+//
+//    }
 }

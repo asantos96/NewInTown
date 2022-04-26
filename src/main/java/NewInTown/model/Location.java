@@ -28,4 +28,13 @@ public class Location {
     public void setDisplayAddress(List<String> displayAddress) {
         this.displayAddress = displayAddress;
     }
+
+
+    public String correctDisplay(){
+        if(displayAddress == null){
+            return "";
+        }
+        return String.join(", " , displayAddress);
+    }
 }
+

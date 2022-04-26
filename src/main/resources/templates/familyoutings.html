@@ -41,13 +41,10 @@
 <div th:each="business : ${family.businesses}">
     <!--properties of the business object-->
     <div class="searchresults">
-        <p class ="name" th:text = "${business.name} ">
-        </p>
-        <p th:text = " ' Rating: ' +  ${business.rating} + ' Price: ' + ${business.price} ">
-        </p>
+        <p class ="name" th:text = "${business.name} "></p>
+        <p th:text = " ' Rating: ' +  ${business.rating} + ' Price: ' + ${business.price} "></p>
         <a th:href="${business.url}">Business' Yelp Review Website</a>
-        <p th:text= "${business.locationDetails.displayAddress.get(0)}">
-        </p>
+        <p th:text= "${business.locationDetails.correctDisplay()}"></p>
     </div>
 </div>
 </body>
