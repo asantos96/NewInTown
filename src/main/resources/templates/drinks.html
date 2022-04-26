@@ -43,7 +43,7 @@
     <!--properties of the business object-->
     <div class="searchresults">
         <p class ="name" th:text = "${business.name} "></p>
-        <p th:text = " ' Rating: ' +  ${business.rating} + ' Price: ' + ${business.price} "></p>
+        <p th:text = " ' Rating: ' +  ${business.rating} + ' Price: ' + ${business.priceDisplay()} "></p>
         <a th:href="${business.url}">Business' Yelp Review Website</a>
         <p th:text= "${business.locationDetails.correctDisplay()}"></p>
     </div>

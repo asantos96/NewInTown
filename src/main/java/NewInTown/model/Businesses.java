@@ -71,8 +71,17 @@ public class Businesses {
     public void setLocationDetails(Location locationDetails) {
         this.locationDetails = locationDetails;
     }
-
-//    public String NPEonPrice() throws NullPointerException {
-//
+    public String priceDisplay(){
+        if(price == null){
+            return "Not Available";
+        }
+        return price;
+    }
+//    public String priceDisplay() throws NullPointerException {
+//        if(price == null){
+//            throw new NullPointerException("Not Available");
+//        }
+//        return price;
 //    }
 }
+
