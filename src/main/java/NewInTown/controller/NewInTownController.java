@@ -38,6 +38,15 @@ public class NewInTownController {
     @RequestMapping( "/")
     public String loadPage() throws IOException {
         RestaurantData restaurantDataTest = newRestaurantService.fetchRestaurantInfo("baltimore", "bars");
+        try
+        {
+            restaurantDataTest.getBusinesses().get(0).getPrice();
+        } catch (NullPointerException nullException){
+            nullException.printStackTrace();
+        }
+        finally{
+            System.out.println("Complete");
+        }
         System.out.println(restaurantDataTest.getBusinesses().get(0).getUrl().toString());
 //        System.out.println(restaurantDataTest.getBusinesses().get(1).getLocationDetails().getDisplayAddress().get(0));
 
