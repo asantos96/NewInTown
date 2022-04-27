@@ -92,6 +92,9 @@ public class NewInTownController {
         RestaurantData dateNightCategories = newRestaurantService.fetchRestaurantInfo(userSavedCity, category);
         System.out.println(category);
         modelMap.put("dateNight", dateNightCategories);
+        if(dateNightCategories.getBusinesses().isEmpty()){
+            return "noresultspage";
+        } else
         return "datenight";
     }
 
@@ -100,6 +103,9 @@ public class NewInTownController {
         String category = familyRepositoryTitles.familyIdeas();
         RestaurantData familyCategories = newRestaurantService.fetchRestaurantInfo(userSavedCity, category);
         modelMap.put("family", familyCategories);
+        if(familyCategories.getBusinesses().isEmpty()){
+            return "noresultspage";
+        } else
         return "familyoutings";
     }
 
@@ -108,6 +114,9 @@ public class NewInTownController {
         String category = distilleriesRepositoryTitles.distilleryIdeas();
         RestaurantData distilleryCategories = newRestaurantService.fetchRestaurantInfo(userSavedCity, category);
         modelMap.put("distillery", distilleryCategories);
+        if(distilleryCategories.getBusinesses().isEmpty()){
+            return "noresultspage";
+        } else
         return "drinks";
     }
 //consider try catch block when calling service to handle errors
