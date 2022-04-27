@@ -5,14 +5,17 @@
     <title>Search Results</title>
     <link rel="stylesheet" href="/stylesheet.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 <style>
+
     h2{
         text-align: center;
     }
     .name {
         font-weight: bold;
     }
+
 </style>
 <body>
 
@@ -32,6 +35,37 @@
     </div>
 </nav>
 
+<script>
+    $('.click').click(function() {
+        if ($('span').hasClass("fa-star")) {
+            $('.click').removeClass('active')
+            setTimeout(function() {
+                $('.click').removeClass('active-2')
+            }, 30)
+            $('.click').removeClass('active-3')
+            setTimeout(function() {
+                $('span').removeClass('fa-star')
+                $('span').addClass('fa-star-o')
+            }, 15)
+        } else {
+            $('.click').addClass('active')
+            $('.click').addClass('active-2')
+            setTimeout(function() {
+                $('span').addClass('fa-star')
+                $('span').removeClass('fa-star-o')
+            }, 150)
+            setTimeout(function() {
+                $('.click').addClass('active-3')
+            }, 150)
+            $('.info').addClass('info-tog')
+            setTimeout(function(){
+                $('.info').removeClass('info-tog')
+            },1000)
+        }
+    })
+</script>
+
+
 <h2> Your Search Results </h2>
 <!--Initial loop to run through businesses list-->
 <div th:each="business : ${userInputKey.businesses}">
@@ -41,6 +75,13 @@
         <p th:text = " ' Rating: ' +  ${business.rating} + ' Price: ' + ${business.priceDisplay()} "></p>
         <a th:href="${business.url}">Business' Yelp Review Website</a>
         <p th:text= "${business.locationDetails.correctDisplay()}"></p>
+        <h4>Click le star to add to favourites</h4>
+        <div class="click">
+            <span class="fa fa-star-o"></span>
+            <div class="ring"></div>
+            <div class="ring2"></div>
+            <p class="info">Added to favourites!</p>
+        </div>
     </div>
 </div>
 </body>
