@@ -20,6 +20,20 @@
 
 <body>
 
+
+
+<script type="text/javascript">
+    function validate() {
+        if (document.getElementById('checkbox').checked) {
+            alert("Added to favorites!");
+        }
+    }
+</script>
+
+
+
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand">Navigation</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,9 +58,11 @@
     <div class="searchresults">
         <p class="name" th:text="${business.name} "></p>
 
+        <form id="favorites" action="favorites" method="get">
+<!--        //th:append css class-->
         <div id="main-content">
             <div>
-                <input type="checkbox" id="checkbox" />
+                <input type="checkbox" name="heart" id="checkbox" value = "heart" onclick="validate()"/>
                 <label for="checkbox">
                     <svg id="heart-svg" viewBox="467 392 58 57" xmlns="http://www.w3.org/2000/svg">
                         <g id="Group" fill="none" fill-rule="evenodd" transform="translate(467 392)">
@@ -93,7 +109,7 @@
 
             </div>
         </div>
-
+        </form>
 
         <p th:text = " ' Rating: ' +  ${business.rating} + ' Price: ' + ${business.priceDisplay()} "></p>
         <a th:href="${business.url}">Business' Yelp Review Website</a>

@@ -1,11 +1,13 @@
 package NewInTown.controller;
 
+import NewInTown.model.Businesses;
 import NewInTown.model.Location;
 import NewInTown.model.RestaurantData;
 import NewInTown.repository.DateNightRepository;
 import NewInTown.repository.DistilleriesAndMoreRepository;
 import NewInTown.repository.FamilyOutingsRepository;
 import NewInTown.service.restaurantService;
+import com.sun.corba.se.spi.activation.BadServerDefinition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -13,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 
 @Controller
@@ -35,6 +40,7 @@ public class NewInTownController {
     static String userSavedCity;
 
 
+
     @RequestMapping( "/")
     public String loadPage() throws IOException {
         RestaurantData restaurantDataTest = newRestaurantService.fetchRestaurantInfo("baltimore", "bars");
@@ -47,11 +53,8 @@ public class NewInTownController {
         finally{
             System.out.println("Complete");
         }
-        System.out.println(restaurantDataTest.getBusinesses().get(0).getUrl().toString());
-//        System.out.println(restaurantDataTest.getBusinesses().get(1).getLocationDetails().getDisplayAddress().get(0));
 
-//
-//        //creates a list of all businesses
+//        creates a list of all businesses
 //        List<Businesses> businessList = restaurantDataTest.getBusinesses();
 //
 //        //loops through each business object
@@ -79,9 +82,15 @@ public class NewInTownController {
         return "search";
     }
 
+
     @RequestMapping("/favorites")
-    public String displayUsersFavorites (ModelMap modelMap) {
-//        modelMap.put("userInputKey", userInput);
+    public String displayUsersFavorites (){
+//    public String displayUsersFavorites (@RequestParam (value ="heart" , required = false) String checkboxValue, ModelMap modelMap) {
+//        if (checkboxValue != null){
+//            System.out.println("checkbox is checked");
+//        }
+//        System.out.println(checkboxValue);
+//        modelMap.put("heartSelection", selectedHeart);
         return "favorites";
     }
 

@@ -77,12 +77,6 @@ public class Businesses {
         }
         return price;
     }
-//    public String priceDisplay() throws NullPointerException {
-//        if(price == null){
-//            throw new NullPointerException("Not Available");
-//        }
-//        return price;
-//    }
 
 }
 
